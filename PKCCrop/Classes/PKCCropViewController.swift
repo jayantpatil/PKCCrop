@@ -239,7 +239,7 @@ extension PKCCropViewController: UIScrollViewDelegate{
         let widthValue = (width - self.imageView.frame.width)/2
         let heightValue = (height - self.imageView.frame.height)/2
         self.imageView.frame.origin = CGPoint(x: widthValue, y: heightValue)
-        self.scrollView.contentInset = UIEdgeInsetsMake(heightValue < 0 ? -heightValue : 0, widthValue < 0 ? -widthValue : 0, heightValue < 0 ? heightValue : 0, widthValue < 0 ? widthValue : 0)
+        self.scrollView.contentInset = UIEdgeInsets(top: heightValue < 0 ? -heightValue : 0, left: widthValue < 0 ? -widthValue : 0, bottom: heightValue < 0 ? heightValue : 0, right: widthValue < 0 ? widthValue : 0)
         self.cropLineView.imageViewSize(self.imageView.frame)
     }
     
@@ -267,7 +267,7 @@ extension PKCCropViewController: PKCCropLineDelegate{
         let path = UIBezierPath(roundedRect: frameValue, cornerRadius: PKCCropHelper.shared.isCircle ? frame.width/2 : 0)
         path.append(UIBezierPath(rect: self.maskView.frame))
         let maskLayer = CAShapeLayer()
-        maskLayer.fillRule = kCAFillRuleEvenOdd
+        maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         maskLayer.backgroundColor = UIColor.clear.cgColor
         maskLayer.path = path.cgPath
         self.maskView.layer.mask = maskLayer

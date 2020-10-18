@@ -35,7 +35,7 @@ class PKCButton: UIButton {
         self.yView = yView
     }
     
-    private func attributed(_ view: UIView, attr1: NSLayoutAttribute, attr2: NSLayoutAttribute){
+    private func attributed(_ view: UIView, attr1: NSLayoutConstraint.Attribute, attr2: NSLayoutConstraint.Attribute){
         self.addConstraint(NSLayoutConstraint(item: self, attribute: attr1, relatedBy: .equal, toItem: view, attribute: attr2, multiplier: 1, constant: 0))
     }
     
